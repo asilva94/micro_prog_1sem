@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programação em Microinformatica- Exercico 01</title>
+</head>
+
+<body>
+
+    <h1>Exemplo prompt</h1>
+    <form id="formulary">
+        <input id="campo1" type="number" placeholder="Valor de A">
+        <input id="campo2" type="number" placeholder="Valor de B">
+        <input id="campo3" type="number" placeholder="Valor de C">
+        <button>Calcular</button>
+    </form>
+    <div id="result"></div>
+
+    <!--<a href="http:www.google,com/">Google</a> Link para html-->
+
+    <script>
+        function onSubmit(event) {
+            event.preventDefault()
+            let a = parseFloat(campo1.value)
+            let b = parseFloat(campo2.value)
+            let c = parseFloat(campo3.value)
+
+            let delta = b * b - 4 * a * c
+
+            let x1 = (-b + Math.sqrt(delta)) / 2 * a
+            let x2 = (-b - Math.sqrt(delta)) / 2 * a
+        
+
+            result.innerHTML =`
+            <li>Entradas: <b>${a}</b>, <b>${b}</b> e <b>${c}</b>.</li>
+            <li> Delta: <b>${delta}</b>.</li>
+            <li> X1: <b>${x1}</b>.</li>
+            <li> X2: <b>${x2}</b>.</li>
+        `
+        }
+        //formulary.addEventListener('Click', onClick)
+        formulary.addEventListener('submit', onSubmit)
+    </script>
+</body>
+
+</html>
