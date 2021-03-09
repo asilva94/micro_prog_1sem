@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programação em Microinformatica- Exercico 01</title>
+</head>
+
+<body>
+
+    <h1>Exemplo prompt</h1>
+    <form id="formulary">
+        <input id="campo1" type="number" placeholder="Preço base do produto">
+        <input id="campo2" type="number" placeholder="Percentual de desconto">
+        <button>Calcular</button>
+    </form>
+    <div id="result"></div>
+
+    <!--<a href="http:www.google,com/">Google</a> Link para html-->
+
+    <script>
+        function onSubmit(event) {
+            event.preventDefault()
+            let price = parseFloat(campo1.value)
+            let discount = parseFloat(campo2.value)
+
+            let amountDiscounted = price * discount / 100
+            let finalPrice = price - amountDiscounted
+
+            result.innerHTML = `
+                <ul>
+                    <li>Preço base= ${price}</li>
+                    <li>Valor do desconto= ${amountDiscounted}</li>
+                    <li>Preço Final= ${finalPrice} </li>
+                </ul>
+                `
+        }
+        //formulary.addEventListener('Click', onClick)
+        formulary.addEventListener('submit', onSubmit)
+    </script>
+</body>
+
+</html>
