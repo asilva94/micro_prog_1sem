@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="base.css">
+<title>Programação em Microinformática - Exercicio 1 - While/For</title>
+</head>
+<body>
+<h1>Exercicio 1</h1>
+<p> Crie uma página onde o usuário irá digitar dois números. Então use uma rotina de repetição para exibir <br>
+    todos os números existentes entre os dois números, de forma negativa, ou seja, contando do maior para o menor. <br>
+    Utilize estruturas condicionais conforme necessário para conseguir exibir corretamente do maior para o menor, <br>
+    independentemente de qual número o usuário digitou primeiro.</p>
+
+<form id="form">
+    <input id="field1" type="number" placeholder="Informe um valor">
+    <input id="field2" type="number" placeholder="Informe outro valor">
+    <button>Exibir</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    function main(event){
+    event.preventDefault()
+
+    let n1 = parseFloat(field1.value)
+    let n2 = parseFloat(field2.value)
+
+    result.innerHTML = ''
+
+    if (n1 > n2){
+        for (let i = n1; i > n2; i++) {
+        result.innerHTML += `${i}, `
+    }
+    }else{
+        for (let i = n2; n1 < i; --i){
+            innerHTML += `${i}, `
+        }
+        result.innerHTML += n1
+    }
+
+    }
+
+    form.addEventListener('submit', main)
+</script>
+</body>
+</html>
