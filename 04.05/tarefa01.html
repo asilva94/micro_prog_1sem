@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="base.css">
+  <title>Programação em Microinformática </title>
+</head>
+<body>
+  <h1>Tarefa 1</h1>
+  <p>Cadastro de professoes usando Arrays e Objetos Literais.</p>
+
+  <form id="form" novalidate>
+    <input id="field1" type="text" placeholder="Nome">
+    <select id="field2" required>
+        <option value="">Qual seu gênero?</option>
+        <option value="Feminino">Feminino</option>
+    <option value="Masculino">Masculino</option>
+    </select>
+    <select id="field3" required>
+        <option value="">Graduação</option>
+        <option value="Bacharelado">Bacharelado</option>
+        <option value="Licenciatura">Masculino</option>
+        <option value="Tecnólogo">Tecnólogo</option>
+        <option value="MBA">MBA</option>
+        <option value="Mestrado">Mestrado</option>
+        <option value="Doutorado">Doutorado</option>
+    </select>
+
+    <button>Adicionar</button>
+
+</form>
+
+<div class="buttons">
+    <button id="showAll">Exibir todos</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+    let teacher = []
+
+    function clearFields() {
+    result.innerHTML = field1.value = field2.value = field3.value = ''
+    field1.focus()
+    }
+
+    function isValid() {
+    field1.className = field2.className = field3.className = ''
+
+    if (!field1.value) {
+        result.innerHTML = '<p class="negative">Informe o nome!</p>'
+        field1.className = 'negative'
+        field1.focus()
+        return false
+    }
+
+    if (!field2.value) {
+        result.innerHTML = '<p class="negative">Informe o sexo!</p>'
+        field2.className = 'negative'
+        field2.focus()
+        return false
+    }
+
+    if (!field3.value) {
+        result.innerHTML = '<p class="negative">Informe a graduação!</p>'
+        field3.className = 'negative'
+        field3.focus()
+        return false
+    }
+
+    return true
+    }
+
+    function onSubmit(event) {
+        event.preventDefault()
+
+        if (!isValid()) return
+
+        let instructor = {
+        Name:field1.value,
+        Sex:field2.value,
+        Graduate:field3.value, 
+    }
+
+    teacher.push(instructor)
+    clearFields()
+    }
+
+    form.addEventListener('submit', onSubmit)
+
+    function onClick(event) {
+    event.preventDefault()
+
+    field1.className = field2.className = field3.className = ''
+
+    if (!teacher.length) {
+        result.innerHTML = '<p class="negative">Nenhum professor cadastrado.</p>'
+        field.focus()
+        return
+    }
+
+    let items = ''
+    for (let instructor of teacher) {
+        items += `<li>${instructor.Name} - ${instructor.Sex} - ${instructor.Graduate}</li>`
+    }
+
+    result.innerHTML = `<ul>${items}</ul>`
+    }
+
+    showAll.addEventListener('click', onClick)
+</script>
+</body>
+</html>
